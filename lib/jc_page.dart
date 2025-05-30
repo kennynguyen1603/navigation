@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sayhi/gestures_page.dart';
+import 'package:sayhi/listview_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -17,12 +19,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const CircleAvatar(
-            radius: 100,
-            backgroundImage: NetworkImage(
-              'https://developer.android.com/static/codelabs/jetpack-compose-animation/img/jetpack_compose_logo_with_rocket.png?hl=vi',
-            ), // Ảnh đại diện giả lập
-          ),
+          // const CircleAvatar(
+          //   radius: 100,
+          //   backgroundImage: NetworkImage(
+          //     'https://developer.android.com/static/codelabs/jetpack-compose-animation/img/jetpack_compose_logo_with_rocket.png?hl=vi',
+          //   ), // Ảnh đại diện giả lập
+          // ),
+          Image.asset('assets/images/uth.jpeg', width: 200, height: 200),
           const SizedBox(height: 16),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,7 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
           const SizedBox(height: 24),
 
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ListviewPage()),
+              );
+            },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
             child: const Text(
               'Press me',
