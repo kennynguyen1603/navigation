@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sayhi/gestures_page.dart';
 import 'package:sayhi/listview_page.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -25,7 +24,20 @@ class _MyHomePageState extends State<MyHomePage> {
           //     'https://developer.android.com/static/codelabs/jetpack-compose-animation/img/jetpack_compose_logo_with_rocket.png?hl=vi',
           //   ), // Ảnh đại diện giả lập
           // ),
-          Image.asset('assets/images/uth.jpeg', width: 200, height: 200),
+          Container(
+            width: 200,
+            height: 200,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                  'https://developer.android.com/static/codelabs/jetpack-compose-animation/img/jetpack_compose_logo_with_rocket.png?hl=vi',
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+
+          // Image.asset('assets/images/uth.jpeg', width: 200, height: 200),
           const SizedBox(height: 16),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
