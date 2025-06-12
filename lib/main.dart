@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sayhi/gestures_page.dart';
 import 'package:sayhi/jc_page.dart';
-import 'package:sayhi/listview_page.dart';
-// import 'gestures_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,37 +28,43 @@ class ThemeProvider extends InheritedWidget {
   }
 }
 
-// final GoRouter _router = GoRouter(
-//   routes: [
-//     GoRoute(
-//       path: '/',
-//       builder: (context, state) => const MainScreen(),
-//       routes: [
-//         GoRoute(path: 'text', builder: (context, state) => const TextDemo()),
-//         GoRoute(path: 'image', builder: (context, state) => const ImageDemo()),
-//         GoRoute(path: 'input', builder: (context, state) => const InputDemo()),
-//         GoRoute(
-//           path: 'buttons',
-//           builder: (context, state) => const ButtonDemo(),
-//         ),
-//         GoRoute(path: 'cards', builder: (context, state) => const CardDemo()),
-//         GoRoute(
-//           path: 'layouts',
-//           builder: (context, state) => const LayoutDemo(),
-//         ),
-//         GoRoute(
-//           path: 'animations',
-//           builder: (context, state) => const AnimationDemo(),
-//         ),
-//         GoRoute(path: 'lists', builder: (context, state) => const ListDemo()),
-//         GoRoute(
-//           path: 'gestures',
-//           builder: (context, state) => const GesturesPage(),
-//         ),
-//       ],
-//     ),
-//   ],
-// );
+final GoRouter _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const MainScreen(),
+      routes: [
+        GoRoute(path: 'text', builder: (context, state) => const TextDemo()),
+        GoRoute(path: 'image', builder: (context, state) => const ImageDemo()),
+        GoRoute(path: 'input', builder: (context, state) => const InputDemo()),
+        GoRoute(
+          path: 'buttons',
+          builder: (context, state) => const ButtonDemo(),
+        ),
+        GoRoute(path: 'cards', builder: (context, state) => const CardDemo()),
+        GoRoute(
+          path: 'layouts',
+          builder: (context, state) => const LayoutDemo(),
+        ),
+        GoRoute(
+          path: 'animations',
+          builder: (context, state) => const AnimationDemo(),
+        ),
+        GoRoute(path: 'lists', builder: (context, state) => const ListDemo()),
+        GoRoute(
+          path: 'gestures',
+          builder: (context, state) => const GesturesPage(),
+        ),
+        GoRoute(
+          path: 'jc',
+          builder:
+              (context, state) =>
+                  const MyHomePage(title: 'Jacket Compose And ListView Page'),
+        ),
+      ],
+    ),
+  ],
+);
 
 class ComponentItem {
   final IconData icon;
@@ -162,36 +167,24 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    // return MaterialApp.router(
-    //   routerConfig: _router,
-    //   debugShowCheckedModeBanner: false,
-    //   title: 'Enhanced UI Components',
-    //   theme: ThemeData(
-    //     useMaterial3: true,
-    //     colorScheme: ColorScheme.fromSeed(
-    //       seedColor: Colors.deepPurple,
-    //       brightness: isDarkMode ? Brightness.dark : Brightness.light,
-    //     ),
-    //   ),
-    //   builder: (context, child) {
-    //     return ThemeProvider(
-    //       isDarkMode: isDarkMode,
-    //       toggleTheme: () => setState(() => isDarkMode = !isDarkMode),
-    //       child: child!,
-    //     );
-    //   },
-    // );
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: _router,
       debugShowCheckedModeBanner: false,
-      title: 'UI Components Demo',
+      title: 'Enhanced UI Components',
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-          brightness: Brightness.light,
+          seedColor: Colors.deepPurple,
+          brightness: isDarkMode ? Brightness.dark : Brightness.light,
         ),
       ),
-      home: const MyHomePage(title: 'Navigation Page'),
+      builder: (context, child) {
+        return ThemeProvider(
+          isDarkMode: isDarkMode,
+          toggleTheme: () => setState(() => isDarkMode = !isDarkMode),
+          child: child!,
+        );
+      },
     );
   }
 }
@@ -300,6 +293,13 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
         subtitle: 'Handling touch gestures',
         route: '/gestures',
         color: Colors.deepOrange,
+      ),
+      ComponentItem(
+        icon: Icons.code,
+        title: 'Jacket Compose',
+        subtitle: 'Jetpack Compose and ListView',
+        route: '/jc',
+        color: Colors.pink,
       ),
     ];
 

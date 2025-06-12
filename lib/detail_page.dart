@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sayhi/inherited_widget.dart';
-import 'package:sayhi/jc_page.dart';
+import 'package:go_router/go_router.dart';
+// import 'package:sayhi/inherited_widget.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
@@ -20,14 +20,9 @@ class DetailPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (context) => const MyHomePage(title: 'Navigation'),
-                  ),
-                  (Route<dynamic> route) => false, // Xóa toàn bộ stack
-                );
+                GoRouter.of(context).go('/');
               },
-              child: const Text('Go Back'),
+              child: const Text('Go Back to Main'),
             ),
           ],
         ),
